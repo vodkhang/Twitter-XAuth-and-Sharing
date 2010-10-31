@@ -210,11 +210,11 @@
 		self.username = self.usernameField.text;
 		self.password = self.passwordField.text;
 
-		if ([delegate_ conformsToProtocol:@protocol(DDSocialLoginDialogDelegate)]) {
+//		if ([delegate_ conformsToProtocol:@protocol(DDSocialLoginDialogDelegate)]) {
 			if ([delegate_ respondsToSelector:@selector(socialDialogDidSucceed:)]) {
 				[delegate_ socialDialogDidSucceed:self];
 			}		
-		}
+//		}
 		
 		[self dismiss:YES];
 	}	

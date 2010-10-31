@@ -18,7 +18,7 @@
     UILabel *charactersLeft;
     UIButton *submitButton;
     
-    NSString *link;
+    NSString *placeHolder;
     NSString *tweet;
 }
 
@@ -28,10 +28,9 @@
 @property (nonatomic, retain) IBOutlet UITextView *tweetView;
 @property (nonatomic, retain) IBOutlet UILabel *charactersLeft;
 @property (nonatomic, retain) IBOutlet UIButton *submitButton;
-@property (nonatomic,  copy) NSString *link;
+@property (nonatomic,  copy) NSString *placeHolder;
 @property (nonatomic,  copy) NSString *tweet;
-- (id)initWithDelegate:(id)aDelegate theme:(DDSocialDialogTheme)theme link:(NSString *)link;
-
+- (id)initWithDelegate:(id)aDelegate theme:(DDSocialDialogTheme)theme placeHolder:(NSString *)tweetPlaceHolder;
 
 @end
 

@@ -6,14 +6,16 @@
 //  Copyright Naklab 2010. All rights reserved.
 //
 
-
+#import "DDSocialLoginDialog.h"
+#import "DDPostTweetDialog.h"
 #import "XAuthTwitterEngineDemoViewController.h"
 #import "XAuthTwitterEngine.h"
 #import "UIAlertView+Helper.h"
 
 @implementation XAuthTwitterEngineDemoViewController
 
-@synthesize usernameTextField, passwordTextField, twitterEngine, sendTweetButton;
+//@synthesize usernameTextField, passwordTextField, 
+@synthesize twitterEngine, sendTweetButton;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -58,7 +60,7 @@
 	}
 	
 	// Focus
-	[self.usernameTextField becomeFirstResponder];
+//	[self.usernameTextField becomeFirstResponder];
 }
 
 
@@ -81,20 +83,30 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	self.usernameTextField = nil;
-	self.passwordTextField = nil;
+//	self.usernameTextField = nil;
+//	self.passwordTextField = nil;
 	self.sendTweetButton = nil;
 }
 
 
 - (void)dealloc {
 	
-	[self.usernameTextField release];
-	[self.passwordTextField release];
+//	[self.usernameTextField release];
+//	[self.passwordTextField release];
 	[self.sendTweetButton release];
 	[self.twitterEngine release];
 	
     [super dealloc];
+}
+
+#pragma mark DDSocialLoginDialogDelegate
+- (void)socialDialogDidSucceed:(DDSocialLoginDialog *)socialLoginDialog {
+    // Use socialLoginDialog.username and socialLoginDialog.password   
+	[self.twitterEngine exchangeAccessTokenForUsername:socialLoginDialog.username password:socialLoginDialog.password];
+} 
+
+- (void)didGettingTweetFromTweetDialog:(DDPostTweetDialog *)tweetDialog {
+	[self.twitterEngine sendUpdate:tweetDialog.tweet];    
 }
 
 #pragma mark -
@@ -102,20 +114,14 @@
 
 - (IBAction)xAuthAccessTokenRequestButtonTouchUpInside
 {
-	NSString *username = self.usernameTextField.text;
-	NSString *password = self.passwordTextField.text;
-	
-	NSLog(@"About to request an xAuth token exchange for username: ]%@[ password: ]%@[.",
-		  username, password);
-	
-	[self.twitterEngine exchangeAccessTokenForUsername:username password:password];
+    DDSocialLoginDialog *loginDialog = [[[DDSocialLoginDialog alloc] initWithDelegate:self theme:DDSocialDialogThemeTwitter] autorelease];
+    [loginDialog show];
 }
 
 - (IBAction)sendTestTweetButtonTouchUpInside
 {
-	NSString *tweetText = @"Testing xAuth from the XAuthTwitterEngineDemo!";
-	NSLog(@"About to send test tweet: \"%@\"", tweetText);
-	[self.twitterEngine sendUpdate:tweetText];
+    DDPostTweetDialog *postTweet = [[[DDPostTweetDialog alloc] initWithDelegate:self theme:DDSocialDialogThemeTwitter placeHolder:@"Testing xAuth from the XAuthTwitterEngineDemo!"] autorelease];
+    [postTweet show];
 }
 
 #pragma mark -

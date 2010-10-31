@@ -10,7 +10,7 @@
 
 @implementation DDPostTweetDialog
 @synthesize tweet;
-@synthesize link;
+@synthesize placeHolder;
 
 @synthesize tweetView;
 @synthesize charactersLeft;
@@ -21,7 +21,7 @@
 #define TWEET_LENGTH 140
 
 #pragma mark Object
-- (id)initWithDelegate:(id)aDelegate theme:(DDSocialDialogTheme)theme link:(NSString *)aLink {
+- (id)initWithDelegate:(id)aDelegate theme:(DDSocialDialogTheme)theme placeHolder:(NSString *)tweetPlaceHolder {
     
 	// Hardcode the dialog CGSize to {250, 210}, especially optimized for iPhone landscape view.
     if ((self = [super initWithFrame:CGRectMake(0, 0, 250, 250) theme:theme])) {
@@ -29,7 +29,7 @@
 		self.delegate = aDelegate;
 		// DDSocialDialogDelegate, so you can use -socialDialogDidSucceed:(socialDialog *) when user cancel the dialog. This is optional.
 		self.dialogDelegate = aDelegate;
-        self.link = aLink;
+        self.placeHolder = tweetPlaceHolder;
 		// Setup title
 		switch (theme) {
 			case DDSocialDialogThemePlurk:
@@ -60,7 +60,7 @@
 	[delegate release];
 	[charactersLeft release];
 	[submitButton release];
-	[link release];
+	[placeHolder release];
 	[tweet release];
     [super dealloc];
 }
@@ -118,11 +118,11 @@
     if (indexPath.section == 2) {
         self.tweet = self.tweetView.text;
         // Here is a submit button
-		if ([self.delegate conformsToProtocol:@protocol(DDPostTweetDialogDelegate)]) {
+//		if ([self.delegate conformsToProtocol:@protocol(DDPostTweetDialogDelegate)]) {
 			if ([self.delegate respondsToSelector:@selector(didGettingTweetFromTweetDialog:)]) {
 				[self.delegate didGettingTweetFromTweetDialog:self];
 			}		
-		}
+//		}
         [self dismiss:YES];
     }
 }
@@ -144,10 +144,11 @@
         case 0:
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell.contentView addSubview:[self tweetView]];
-            if (!self.link) {
-                self.link = @"";
+            if (!self.placeHolder) {
+                self.placeHolder = @"";
             }
-            self.tweetView.text = [NSString stringWithFormat:@"This movie is so cool %@", self.link];
+            self.tweetView.text = self.placeHolder;
+//            self.tweetView.text = [NSString stringWithFormat:@"This movie is so cool %@", self.placeHolder];
             break;
         case 1:
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
