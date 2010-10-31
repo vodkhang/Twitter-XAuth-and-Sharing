@@ -2,5 +2,7 @@ The code mainly demo the function to use the Twitter XAuth and also have a nice 
 
 Most of the code is copied from http://github.com/aral/XAuthTwitterEngine and the Twitter Pop Up is copied from http://github.com/digdog/DDSocialDialog
 
-Use at your own risks, but feel free to send me an email if you have any query. vodkhang@gmail.com or visit my blog at : vodkhang.wordpress.com
+The license is under MIT and Apache 2.0 licenses
+
+Feel free to use at your own risks, but feel free to send me an email if you have any query. vodkhang@gmail.com or visit my blog at : vodkhang.wordpress.com
 
