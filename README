@@ -1,6 +1,6 @@
 The code mainly demo the function to use the Twitter XAuth and also have a nice facebook style pop-up. It is very useful if you only want to have a quick Twitter sharing button on your own application. You don't have to care much about how to get it work.
 
-Most of the code is copied from http://github.com/aral/XAuthTwitterEngine and the Twitter Pop Up is copied from http://github.com/digdog/DDSocialDialog
+Most of the code is copied from http://github.com/aral/XAuthTwitterEngine ( his feather app is good to try as well http://feathersapp.com/  )  and the Twitter Pop Up is copied from http://github.com/digdog/DDSocialDialog
 
 The license is under MIT and Apache 2.0 licenses
 
