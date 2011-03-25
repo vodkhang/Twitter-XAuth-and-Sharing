@@ -24,8 +24,8 @@
 // ************************
 //
 
-#define kOAuthConsumerKey		@"INDTRdiJRvIqFplFRECBvw"		// Replace these with your consumer key 
-#define	kOAuthConsumerSecret	@"onQrxHZ1xLWfK7844HEiE9eyxG4B6oUaeXXbOsVs"		// and consumer secret from 
+#define kOAuthConsumerKey		@""		// Replace these with your consumer key 
+#define	kOAuthConsumerSecret	@""		// and consumer secret from 
 										// http://twitter.com/oauth_clients/details/<your app id>
 
 #define kTokenKey			@"tokenKey"
