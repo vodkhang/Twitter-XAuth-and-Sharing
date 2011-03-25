@@ -132,6 +132,16 @@
     [self.twitterEngine sendUpdate:text];
 }
 
+- (void)logout {
+    NSString *tokenKey = [[NSUserDefaults standardUserDefaults] objectForKey:kTokenKey];
+    
+    NSError *error = nil;
+    [SFHFKeychainUtils deleteItemForUsername:tokenKey 
+                              andServiceName:kMGTwitterEngineDemoServiceName 
+               sharedKeychainAccessGroupName:nil
+                                       error:&error];
+    self.sendTweetButton.enabled = NO;
+}
 #pragma mark -
 #pragma mark MGTwitterEngineDelegate methods
 

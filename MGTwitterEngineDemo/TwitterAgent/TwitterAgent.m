@@ -109,6 +109,8 @@ static TwitterAgent* agent;
 	txtUsername.text =@"";
 	txtPassword.text =@"";
 	isLogged = NO;
+    
+    [self.delegate logout];
 }
 - (void) loginAgain{
 	[messageDialog dismissWithClickedButtonIndex:messageDialog.cancelButtonIndex animated:YES];
