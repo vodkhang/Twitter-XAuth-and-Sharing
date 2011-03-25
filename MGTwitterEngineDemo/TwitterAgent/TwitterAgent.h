@@ -93,7 +93,7 @@
 
 
 @protocol TwitterAgentDelegate
-
+- (void)sendWithText:(NSString *)text;
 - (void)loginWithUserName:(NSString *)userName password:(NSString *)password;
 
 @end

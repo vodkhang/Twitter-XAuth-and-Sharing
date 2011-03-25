@@ -234,7 +234,13 @@ static TwitterAgent* agent;
 }
 
 - (void)OnLogin:(id)sender {
+    self.userName = txtUsername.text;
+    self.password = txtPassword.text;
     [self.delegate loginWithUserName:self.userName password:self.password];
+}
+
+- (void)OnSend:(id)sender {
+    [self.delegate sendWithText:txtMessage.text];
 }
 
 - (void)sendMessage:(NSString *)sentMessage {

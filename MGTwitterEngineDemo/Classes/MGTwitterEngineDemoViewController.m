@@ -117,7 +117,6 @@
 	
 	NSLog(@"About to request an xAuth token exchange for username: ][ password: ][.");
 	[[TwitterAgent defaultAgentWithDelegate:self] login];
-    self.sendTweetButton.enabled = YES;
 
 //	[self.twitterEngine getXAuthAccessTokenForUsername:username password:password];
 }
@@ -127,6 +126,10 @@
 	// Adding random number to the tweet to avoid Twitter's 403 "Status is a duplicate" error.
 	NSString *tweetText = [NSString stringWithFormat:@"Testing xAuth from the MGTwitterEngineDemo by @aral! %d", arc4random()%144];
     [[TwitterAgent defaultAgentWithDelegate:self] sendMessage:tweetText];
+}
+
+- (void)sendWithText:(NSString *)text {
+    [self.twitterEngine sendUpdate:text];
 }
 
 #pragma mark -
