@@ -112,13 +112,8 @@
 
 - (IBAction)xAuthAccessTokenRequestButtonTouchUpInside
 {
-//	NSString *username = self.usernameTextField.text;
-//	NSString *password = self.passwordTextField.text;
-	
 	NSLog(@"About to request an xAuth token exchange for username: ][ password: ][.");
 	[[TwitterAgent defaultAgentWithDelegate:self] login];
-
-//	[self.twitterEngine getXAuthAccessTokenForUsername:username password:password];
 }
 
 - (IBAction)sendTestTweetButtonTouchUpInside
